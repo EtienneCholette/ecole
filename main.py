@@ -83,7 +83,7 @@ import turtle
 
 
 def draw_circle(x, y, radius, text):
-    turtle.speed(0)
+    turtle.speed(1)
     turtle.penup()
     turtle.goto(x, y - radius)
     turtle.pendown()
@@ -95,7 +95,7 @@ def draw_circle(x, y, radius, text):
 
 
 def draw_line(start, end):
-    turtle.speed(0)
+    turtle.speed(1)
     turtle.penup()
     turtle.goto(start)
     turtle.pendown()
@@ -103,7 +103,7 @@ def draw_line(start, end):
 
 
 def draw_perceptron():
-    turtle.speed(0)
+    turtle.speed(1)
 
     # Draw input circles
     draw_circle(-150, 150, 20, 'Ludovic')
