@@ -1,25 +1,31 @@
 import numpy as np
 from numpy import array, random, dot, tanh
 
-monday = input("Who came Monday? \n Do Ludovic, Jonathan, Étienne \nEnter three space-separated values: ")
-monday_Matrix = np.array(list(map(int, monday.split())))
 
-Tuesday = input("Who came Tuesday? \n Do Ludovic, Jonathan, Étienne \nEnter three space-separated values: ")
-Tuesday_Matrix = np.array(list(map(int, Tuesday.split())))
+print('This is a questionnaire to determine if you should invest money based on your situation.\nI will ask you three questions. You only have to answer using 1 for yes and 0 for no.')
 
-Wednesday = input("Who came Wednesday? \n Do Ludovic, Jonathan, Étienne \nEnter three space-separated values: ")
-Wednesday_Matrix = np.array(list(map(int, Wednesday.split())))
+w = []
 
-Thursday = input("Who came Thursday \n Do Ludovic, Jonathan, Étienne,  \nEnter three space-separated values: ")
-Thursday_Matrix = np.array(list(map(int, Thursday.split())))
+# Ask the first question
+question1 = "You should only invest money that you are ready to lose.\nDo you have money you can afford to lose?\nPress [1] + [enter] if yes or press [0] + [enter] if no. "
+answer1 = input(question1)
+w.append(int(answer1))
 
-Vincent_action = input("When did Vincent come to class? \nEnter four space-separated values: ")
-Vincent_Matrix = np.array(list(map(int, Vincent_action.split())))
+# Ask the second question
+question2 = "Do you Have an Emergency Fund\nPress [1] + [enter] if yes or press [0] + [enter] if no. "
+answer2 = input(question2)
+w.append(int(answer2))
 
-print('We need to determine if Vincent will go to its class')
-user_input = input("Enter three space-separated values: ")
-w = np.array(list(map(int, user_input.split())))
+# Ask the third question
+question3 = "Do you Have Long-Term Financial Goals\nPress [1] + [enter] if yes or press [0] + [enter] if no. "
+answer3 = input(question3)
+w.append(int(answer3))
 
+# Convert the list 'w' to a NumPy array
+w = np.array(w)
+
+'''user_input = input("You should only invest money that you are ready to lose \nDo you have money you can afford to lose?\n\nPress [1] + [enter] if yes or press [0] + [enter] if no. ")
+w = np.array(list(map(int, user_input.split())))'''
 
 class NeuralNetwork:
 
@@ -67,10 +73,10 @@ if __name__ == "__main__":
     print('Random weights at the start of training')
     print(neural_network.weight_matrix)
 
-    train_inputs = array([monday_Matrix, Tuesday_Matrix, Wednesday_Matrix, Thursday_Matrix])
-    train_outputs = array([Vincent_Matrix]).T
+    training_set_inputs = array([[0, 0, 1], [1, 1, 0], [1, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 1], [1, 1, 0]])
+    training_set_outputs = array([[0, 1, 0, 0, 0, 1, 1]]).T
 
-    neural_network.train(train_inputs, train_outputs, 10000)
+    neural_network.train(training_set_inputs, training_set_outputs, 10000)
 
     print('New weights after training')
     print(neural_network.weight_matrix)
@@ -83,7 +89,7 @@ import turtle
 
 
 def draw_circle(x, y, radius, text):
-    turtle.speed(0)
+    turtle.speed(3)
     turtle.penup()
     turtle.goto(x, y - radius)
     turtle.pendown()
@@ -95,7 +101,7 @@ def draw_circle(x, y, radius, text):
 
 
 def draw_line(start, end):
-    turtle.speed(0)
+    turtle.speed(3)
     turtle.penup()
     turtle.goto(start)
     turtle.pendown()
@@ -103,12 +109,12 @@ def draw_line(start, end):
 
 
 def draw_perceptron():
-    turtle.speed(0)
+    turtle.speed(3)
 
     # Draw input circles
-    draw_circle(-150, 150, 20, 'Ludovic')
-    draw_circle(-150, 50, 20, 'Jonathan')
-    draw_circle(-150, -50, 20, 'Étienne')
+    draw_circle(-150, 150, 20, 'Readiness to lose money')
+    draw_circle(-150, 50, 20, 'Time horizon')
+    draw_circle(-150, -50, 20, 'y')
 
     row_index = 0
     col_index = 0
@@ -152,12 +158,12 @@ def draw_perceptron():
     turtle.pendown()
 
     if (w1 > 1 and w2 > 1) or (w1 > 1 and w3 > 1) or (w2 > 1 and w3 > 1):
-        turtle.write('Not enough data', align="center", font=("Arial", 15, "bold"))
+        turtle.write('It is advisable to further assess your financial\nsituation and investment knowledge before making a decision.', align="center", font=("Arial", 15, "bold"))
     else:
         if neural_network.forward_propagation(array(w)) > 0.9:
-            turtle.write('Vincent will go to the class', align="center", font=("Arial", 15, "bold"))
+            turtle.write('The person who answered the questions is ready to invest', align="center", font=("Arial", 15, "bold"))
         else:
-            turtle.write('Vincent will not go to the class', align="center", font=("Arial", 15, "bold"))
+            turtle.write('The person who answered the questions is not ready to invest', align="center", font=("Arial", 15, "bold"))
 
     turtle.done()
 
