@@ -161,10 +161,11 @@ def draw_perceptron():
         turtle.write('It is advisable to further assess your financial\nsituation and investment knowledge before making a decision.', align="center", font=("Arial", 15, "bold"))
     else:
         if neural_network.forward_propagation(array(w)) > 0.9:
+            turtle.color('green')
             turtle.write('The person who answered the questions is ready to invest', align="center", font=("Arial", 15, "bold"))
         else:
+            turtle.color('red')
             turtle.write('The person who answered the questions is not ready to invest', align="center", font=("Arial", 15, "bold"))
-
     turtle.done()
 
 
