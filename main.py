@@ -113,8 +113,8 @@ def draw_perceptron():
 
     # Draw input circles
     draw_circle(-150, 150, 20, 'Readiness to lose money')
-    draw_circle(-150, 50, 20, 'Time horizon')
-    draw_circle(-150, -50, 20, 'y')
+    draw_circle(-150, 50, 20, 'Emergency fund')
+    draw_circle(-150, -50, 20, 'Long-term project')
 
     row_index = 0
     col_index = 0
