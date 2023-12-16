@@ -50,7 +50,7 @@ class NeuralNetwork:
               num_train_iterations):
         # Number of iterations we want to
         # perform for this set of input.
-        for iteration in range(num_train_iterations):
+        for iteration in range(100000):
             output = self.forward_propagation(train_inputs)
 
             # Calculate the error in the output.
