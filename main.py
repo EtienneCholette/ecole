@@ -50,7 +50,7 @@ class NeuralNetwork:
               num_train_iterations):
         # Number of iterations we want to
         # perform for this set of input.
-        for iteration in range(100000):
+        for iteration in range(num_train_iterations):
             output = self.forward_propagation(train_inputs)
 
             # Calculate the error in the output.
@@ -113,8 +113,8 @@ def draw_perceptron():
 
     # Draw input circles
     draw_circle(-150, 150, 20, 'Readiness to lose money')
-    draw_circle(-150, 50, 20, 'Emergency fund')
-    draw_circle(-150, -50, 20, 'Long-term project')
+    draw_circle(-150, 50, 20, 'Time horizon')
+    draw_circle(-150, -50, 20, 'y')
 
     row_index = 0
     col_index = 0
@@ -161,11 +161,10 @@ def draw_perceptron():
         turtle.write('It is advisable to further assess your financial\nsituation and investment knowledge before making a decision.', align="center", font=("Arial", 15, "bold"))
     else:
         if neural_network.forward_propagation(array(w)) > 0.9:
-            turtle.color('green')
             turtle.write('The person who answered the questions is ready to invest', align="center", font=("Arial", 15, "bold"))
         else:
-            turtle.color('red')
             turtle.write('The person who answered the questions is not ready to invest', align="center", font=("Arial", 15, "bold"))
+
     turtle.done()
 
 
