@@ -76,7 +76,7 @@ if __name__ == "__main__":
     training_set_inputs = array([[0, 0, 1], [1, 1, 0], [1, 0, 1], [0, 1, 1], [1, 0, 0], [1, 1, 1], [1, 1, 0]])
     training_set_outputs = array([[0, 1, 0, 0, 0, 1, 1]]).T
 
-    neural_network.train(training_set_inputs, training_set_outputs, 10000)
+    neural_network.train(training_set_inputs, training_set_outputs, 100000)
 
     print('New weights after training')
     print(neural_network.weight_matrix)
