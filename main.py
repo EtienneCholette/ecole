@@ -157,7 +157,7 @@ def draw_perceptron():
     turtle.goto(0, -100)  # Move the turtle to (-100, -100)
     turtle.pendown()
 
-    if (w1 > 1 and w2 > 1) or (w1 > 1 and w3 > 1) or (w2 > 1 and w3 > 1):
+    if 0.6 < neural_network.forward_propagation(array(w)) < 0.9:
         turtle.write('It is advisable to further assess your financial\nsituation and investment knowledge before making a decision.', align="center", font=("Arial", 15, "bold"))
     else:
         if neural_network.forward_propagation(array(w)) > 0.9:
